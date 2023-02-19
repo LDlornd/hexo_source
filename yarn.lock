@@ -618,7 +618,7 @@
 
 "hexo-server@^2.0.0":
   "integrity" "sha512-GnxCU0hjepjmqMENcKOKxpzOajb9YrjQczWsZPXU25l5Ze+M9KJLSVljIRFR+ikDRIPDtXaUY2WgYrWPbNEGfg=="
-  "resolved" "https://registry.npmjs.org/hexo-server/-/hexo-server-2.0.0.tgz"
+  "resolved" "https://registry.npmmirror.com/hexo-server/-/hexo-server-2.0.0.tgz"
   "version" "2.0.0"
   dependencies:
     "bluebird" "^3.5.5"
