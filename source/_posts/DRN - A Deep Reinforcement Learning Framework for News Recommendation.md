@@ -70,7 +70,7 @@ $$y_{s, a} = Q(s, a) = r_{\rm immediate} + \gamma r_{\rm future}$$
 
 $$y_{s, a, t} = r_{a, t + 1} + \gamma Q(s_{a, t+1}, \arg \max\limits_{a^{'}}{Q(s_{a, t + 1},a^{'};W_t)};W_t^{'})$$
 
-其中： $r_{a, t + 1}$ 表示采取动作 $a$ 能够立刻获得的奖励；$W_t$ 和 $W_t^{'}$ 分别表示两个 DQN 的参数。 -->
+其中： $r_{a, t + 1}$ 表示采取动作 $a$ 能够立刻获得的奖励；$W_t$ 和 $W_t^{'}$ 分别表示两个 DQN 的参数。
 
 Q 网络的结构如下：
 
