@@ -29,7 +29,9 @@ tags:
 
 相较于真正的策略来说，工作流层次更高：它并不告诉智能体要点击哪一封邮件或者在哪个文本框内输入字符，但是它可以限制每一个时间步可以选择的动作。即，**工作流是与环境无关的，它并不依赖于环境的状态是怎样的，它只是一系列可以盲目遵循的步骤**。最终的策略当然不能与环境无关，但是在探索的过程中，环境无关性是一个很好的归纳偏差。
 
+{% gallery %}
 ![基于工作流的探索流程](/images/wge/framework.png)
+{% endgallery %}
 
 基于工作流的探索过程（workflow-guided exploration, WGE）工作方式如上图所示：
 
@@ -60,7 +62,9 @@ Web 环境和传统的强化学习环境（如机器人或者游戏）一个主�
 
 接下来定义工作流集合。对于演示 $d$ 的每一个时间步，都可以定义一个集合 $Z_t$ 包括在时间 $t$ 所有可能的工作流步 $z_t$ ，即集合 $Z_t$ 中的所有工作流步 $z_t$ 都满足 $\tilde{a}_t\in z_t(\tilde{s}_t)$ 。这样，所有的工作流集合一共可以创造 $|Z_1|\times\cdots\times|Z_t|$ 条工作流。如下图所示：
 
+{% gallery %}
 ![工作流图](/images/wge/workflow.png)
+{% endgallery %}
 
 为了解决有些动作是不必要的情况下演示噪声的问题（如专家偶然点击了一下页面的空白处），引入了可以跳过一些时间步的步骤。同样地，对可以压缩成一个等价动作的动作（如依次输入两个字符等价于一次性输入两个字符）提供跳过步骤。这些跳过步骤使得引入的工作流长度不一定和演示长度相等。在之后的讨论中，为了简化符号，会忽略跳过步骤。
 
@@ -104,7 +108,9 @@ $$\sum\limits_{t}(G_t - v_{d, t})\nabla_{\psi}\log\sum\limits_{z}p(a_t\ |\ z, s_
 
 本文提出了 DOMNet ，一个提取 DOM 树上空间结构和等级结构信息的神经网络。其结构如下图所示：
 
+{% gallery %}
 ![DOMNet](/images/wge/domnet.png)
+{% endgallery %}
 
 首先，网络对 DOM 元素和输入的目标进行嵌入操作。然后网络对嵌入向量进行一系列的 attention 操作以产生最终的动作分布 $\pi_n(a\ |\ s)$ 和价值函数 $V(s)$ 。
 
@@ -145,7 +151,9 @@ DOM embedder 的作用在于提取 DOM 元素之间的各种交互数据。具�
 
 实验结果如下图所示：
 
+{% gallery %}
 ![MiniWob 实验结果](/images/wge/miniwobres.png)
+{% endgallery %}
 
 对比 SHI17 和 DOMNet+BC+RL 可以发现：在大多数任务上，DOMNet+BC+RL 提高了成功率。
 
@@ -157,7 +165,9 @@ DOM embedder 的作用在于提取 DOM 元素之间的各种交互数据。具�
 
 本文构建并发布了 MiniWoB++ 环境，包括用于研究额外的挑战的任务。如：更长的时间窗口（click-checkboxes-large），自然语言的“软”推理（click-checkboxes-soft），以及随机变化的布局（multiorderings, multi-layouts）。下表列出了任务的时间窗口（实现最长目标的完美策略所需要的步骤数），作为衡量任务复杂性的粗略标准。
 
+{% gallery %}
 ![MiniWoB++](/images/wge/minwobplus.png)
+{% endgallery %}
 
 实验结果表明：相较于 BC+RL 模型，WGE 模型在绝对成功率上提升了约 $42\%$ 。分析模型的行为，可以发现有两种模式，BC+RL 模型经常失败，但是 WGE 可以减轻对应的问题。
 
@@ -194,6 +204,8 @@ MiniWoB 任务提供的目标都是结构化的，本文也在自然语言描述
 
 将 DOMNet+WGE 和 DOMNet+BC+RL 在不同的演示数量上进行实验，实验结果如下图所示：
 
+{% gallery %}
 ![采样效率实验](/images/wge/demores.png)
+{% endgallery %}
 
 可以发现：通过增加演示的数量，BC+RL 方法的表现确实得到了提高，因为这会防止过拟合。但是，在每个任务上，只是用 10 个演示训练的 WGE 效果还是要好于用 1000 个演示训练的 BC+RL 。这说明：就演示数量而言，WGE 方法的采样效率相较于动作克隆方法提升了超过 100 倍。

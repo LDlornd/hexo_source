@@ -47,7 +47,9 @@ tags:
 
 ### 简约 Web 任务：MiniWoB
 
+{% gallery %}
 ![MinWoB](/images/wob/minwob.png)
+{% endgallery %}
 
 为了简化任务和环境，MiniWoB 的环境只有 112 行 HTML/CSS/JavaScript 代码。每个 MiniWoB 环境的 HTML 页面宽 160 个像素，高 210 个像素。其中最顶端的 50 个像素（黄色背景）包括了任务的自然语言描述，而下方的 $160 \times 160$ 的区域用于交互。
 
@@ -67,7 +69,9 @@ FormWoB 的目的在于将网站转换成 Web 任务。因为网站每时每刻�
 
 QAWoB 的提出在于充分利用互联网的大规模与多样性。作为一个能够生成 Web 任务，而不需要人工为每个任务指定奖励函数的更具有扩展性的方法，其关键在于将 Web 任务建模成问题回答任务，并且通过众包工作来征求问题。
 
+{% gallery %}
 ![QAWoB](/images/wob/qawob.png)
+{% endgallery %}
 
 如上图所示，众包工作主要包括两个步骤：
 
@@ -97,7 +101,9 @@ QAWoB 的提出在于充分利用互联网的大规模与多样性。作为一�
 
 **动作空间**：动作空间包括指针位置、鼠标操作和键盘操作。这三种元素的采样都通过**多项式分布**进行采样。对于指针位置，从图像中的每个一位置进行采样，其取值为：$m = (m_x, m_y) \in [0, W)\times [0, H)$ ；对于鼠标操作，从五种操作中进行采样：没有操作，点击，拖拽，上滑滚轮，下滑滚轮；对于键盘操作，除了单键的按下以外，还将部分安全的组合键作为原子操作，纳入键盘的动作空间，如复制、粘贴、全选快捷键等。
 
+{% gallery %}
 ![Architecture](/images/wob/Architecture.png)
+{% endgallery %}
 
 **模型架构**：如上图所示，对于图像，通过一个 CNN 进行特征提取；对于 DOM 文档，通过请求与 DOM 之间的匹配关系建立一个文本特征映射。接下来，两个被提取的特征被连接成为一个联合特征。基于上述处理，后续的处理有两种方式：
 
@@ -150,7 +156,9 @@ $$SR = \dfrac{\sum 1[R>0]}{\sum 1[R\neq 0]}$$
 
 #### 实验结果
 
+{% gallery %}
 ![MiniWoB 实验结果](/images/wob/minwob_res.png)
+{% endgallery %}
 
 如果一个任务的成功率在 $50\%$ 以上，就认为这个任务被解决（Solved）。
 
@@ -180,7 +188,9 @@ FormWoB 环境的页面大小为 $375\times 667\times 3$ 。数据集包括四�
 
 对于键盘操作，如果只是把键盘操作看成一个简单的分类问题，这对智能体来说是很困难的，因为智能体必须学会在一次输入一个字母的情况下，输入完整的单词。因此，对于每一个槽值，引入一个指针，智能体只需要决定输出哪个槽的下一个字符。
 
+{% gallery %}
 ![槽值输入](/images/wob/input_slot_value.png)
+{% endgallery %}
 
 如上图所示，一共有四个槽，如果智能体输出的动作序列为 `K1 K1 K1 K2 K2` ，那么会依次输入 `S a n` （SanFrancisco 的前缀），再依次输入 `N e` （NewYork） 的前缀。这时，第二个槽的指针会指向 `w` ，而第一个槽的指针会被重置，指向 `S` 。
 
@@ -200,15 +210,21 @@ FormWoB 环境的页面大小为 $375\times 667\times 3$ 。数据集包括四�
 
 下图展示了 FromWoB 环境中智能体的学习曲线：
 
+{% gallery %}
 ![FromWoB 学习曲线](/images/wob/forwob_learning.png)
+{% endgallery %}
 
 下图的前半部分展示了 FormWoB 的实验结果：
 
+{% gallery %}
 ![FormWoB 与 QAWoB 试验结果](/images/wob/formwob_res.png)
+{% endgallery %}
 
 随机方法在 FormWoB 的任务中所获得的奖励为 0 ，而本文所提出的模型表现出了学习与泛化的能力。具体地，对于航班预定任务，模型在训练集上达到了人类水平的 $20\%\sim 30\%$ ，在测试集上达到了人类水平的 $16\%$ 。
 
+{% gallery %}
 ![注意力机制可视化](/images/wob/attention.png)
+{% endgallery %}
 
 对模型的注意力机制进行可视化可以发现：通过文本匹配的帮助，模型能够成功在下拉框中选择城市和正确的日期。并且在一些随机的滚动发生之后，模型依旧能集中注意力在”提交“按钮上。智能体最常见的错误模式是：如果出现了一些人类演示之外的错误（如报错信息），那么智能体很难采取动作修复错误。
 
@@ -218,6 +234,8 @@ QAWoB 的实验设置与 FormWoB 相同，测试网站包括：Xe、Allrecipes�
 
 下图的后半部分展示了 QAWoB 的实验结果：
 
+{% gallery %}
 ![FormWoB 与 QAWoB 试验结果](/images/wob/formwob_res.png)
+{% endgallery %}
 
 观察发现，LocalCNN 架构不足以处理 QAWoB 任务，而 GlobalCNN 架构要好很多。这与训练过程中，GlobalCNN（$\sim 0.08$） 的 loss 低于 LocalCNN（$\sim 0.2$） 是一致的。推测原因为：LocalCNN 中引入的归纳偏差会使其无法拟合有很多噪声的人类演示。
