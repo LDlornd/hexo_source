@@ -1,0 +1,19 @@
+- dacilab:
+  description: 这是我所在的实验室。
+  items:
+    - title: DACI-LAB
+      url: https://www.dacilab.com/
+      avatar: https://www.dacilab.com/static/favicon.ico
+      description: 这个实验室的主人真的很讨厌欸(×_×)
+
+- friends:
+  description: 这是我的朋友们。
+  items: 
+    - title: DOFY
+      url: http://dofy.top/
+      avatar: https://home.dofy.top/authors/admin/avatar_hu838b93daa5fbd7241d361d8b1b5b8e11_4502172_270x270_fill_q75_lanczos_center.jpg
+      description: 我 OI 的引路人
+    - title: QYQYQYQYQYQYQ
+      url: http://qyqyqyqyqyq.top/
+      avatar: https://en.gravatar.com/userimage/179985505/c3daaf8228ba883f09eccd853172200a.png
+      description: 学 OI 时的好伙伴
